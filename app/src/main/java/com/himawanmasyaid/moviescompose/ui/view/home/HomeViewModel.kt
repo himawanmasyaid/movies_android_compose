@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.himawanmasyaid.moviescompose.data.request.MoviesRequest
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
+import com.himawanmasyaid.moviescompose.data.response.PeopleModel
 import com.himawanmasyaid.moviescompose.data.state.ViewState
 import com.himawanmasyaid.moviescompose.repo.MovieRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,6 +31,9 @@ class HomeViewModel @Inject constructor(
     private val _words = mutableStateOf(MovieModel()) // 1
     val words: State<MovieModel> = _words
 
+    private val _peoples = mutableStateOf(PeopleModel()) // 1
+    val peoples: State<PeopleModel> = _peoples
+
 
 //    val homeSampleState = MutableStateFlow(ResponseState<MovieResponse>(
 //        state = NetworkState.LOADING,
@@ -48,14 +52,12 @@ class HomeViewModel @Inject constructor(
             homeState.postValue(ViewState.Loading())
             try {
 
-                setLog("start rest api")
+                val movie_response = movieRepo.fetchMovies(MoviesRequest(page = 1))
+//                val movie_response = movieRepo.fetchMovies(MoviesRequest(page = 1))
 
-                val response = movieRepo.fetchMovies(MoviesRequest(page = 1))
-                _words.value = response
+                _words.value = movie_response
 
-                homeState.postValue(ViewState.Success(response))
-
-                setLog("succes")
+                homeState.postValue(ViewState.Success(movie_response))
 
             } catch (error: Exception) {
                 setLog("error : ${error.message}")

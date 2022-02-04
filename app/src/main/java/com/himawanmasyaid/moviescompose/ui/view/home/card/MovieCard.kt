@@ -1,72 +1,119 @@
 package com.himawanmasyaid.moviescompose.ui.view.home.card
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
-import com.himawanmasyaid.moviescompose.ui.theme.TextStyleTypography
-import com.himawanmasyaid.moviescompose.ui.theme.textBlackColor
+import com.himawanmasyaid.moviescompose.ui.common.ImageLoadPoster
+import com.himawanmasyaid.moviescompose.ui.theme.*
 
 
 @Composable
 fun MovieCard(movie: MovieModel.Result) {
 
-    androidx.compose.foundation.layout.Box(
-        modifier = androidx.compose.ui.Modifier
-            .height(150.dp)
+    Box(
+        modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)
+            .padding(16.dp)
+            .border(
+                BorderStroke(
+                    1.5.dp,
+                    SolidColor(bgLineColor)
+                ),
+                RoundedCornerShape(10.dp)
+            )
     ) {
-
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .width(150.dp)
-                .padding(start = 18.dp, end = 10.dp, bottom = 10.dp, top = 10.dp)
         ) {
-            Text(
-//                    text = space.name,
-                text = movie.originalTitle,
-                style = TextStyleTypography.h3,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 2,
-                textAlign = TextAlign.Start,
+
+            ImageLoadPoster(
+                imageUrl = movie.posterPath,
                 modifier = Modifier
+                    .height(250.dp)
                     .fillMaxWidth()
+                    .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Text(
-                text = "Release Date : ${movie.releaseDate}",
-                color = textBlackColor,
-                style = TextStyleTypography.subtitle1,
-                fontSize = 14.sp,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                textAlign = TextAlign.Start,
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-            )
+                    .padding(16.dp)
+            ) {
 
-//        Text(
-//            text = "Sleman, Yogyakarta",
-//            color = textBlack3Color,
-//            style = Typography.body2, fontSize = 14.sp,
-//            overflow = TextOverflow.Ellipsis,
-//            maxLines = 1,
-//            modifier = Modifier.height(50.dp)
-//        )
+                Text(
+                    text = movie.originalTitle,
+                    style = TextStyleTypography.h2,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "Release Date : ${movie.releaseDate}",
+                    color = textBlackColor,
+                    style = TextStyleTypography.subtitle1,
+                    fontSize = 14.sp,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+
+                Text(
+                    text = "${movie.voteAverage} Rating",
+                    color = textWhiteColor,
+                    style = TextStyleTypography.h5,
+                    fontSize = 16.sp,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .background(orangeColor, RoundedCornerShape(30.dp))
+                        .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)
+
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "${movie.voteCount} People Votes",
+                    color = textBlack3Color,
+                    style = TextStyleTypography.body2,
+                    fontSize = 14.sp,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+
+            }
 
         }
-
     }
 
 }

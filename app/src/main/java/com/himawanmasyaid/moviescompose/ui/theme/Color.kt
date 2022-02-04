@@ -16,7 +16,12 @@ val textBlackColor = Color(0xFF221F1F)
 val textBlack2Color = Color(0xFF575656)
 val textBlack3Color = Color(0xFF757575)
 
+val textWhiteColor = Color(0xFFFFFFFF)
+
 // Background Custom
 val bgPrimaryColor = Color(0xFFF5F5F1)
 val bgSecondaryColor = Color(0xFFC4C4C4)
-val bgLineColor = Color(0xFFC4C4C4)
+val bgLineColor = Color(0xFFE2E2E2)
+
+val yellowColor = Color(0xFFFFE800)
+val orangeColor = Color(0xFFFF6600)

@@ -3,13 +3,17 @@ package com.himawanmasyaid.moviescompose.ui.view.home
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
+import com.himawanmasyaid.moviescompose.data.response.PeopleModel
 import com.himawanmasyaid.moviescompose.ui.view.home.card.MovieCard
+import com.himawanmasyaid.moviescompose.ui.view.home.card.PeopleCard
 
 @Composable
 fun HomeView(
@@ -22,8 +26,24 @@ fun HomeView(
 
     val movies by homeViewModel.words
 
-    MoviesList(movieList = movies.results)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
 
+        // PEOPLE
+
+
+
+        // MOVIE
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        MoviesList(movieList = movies.results)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+    }
 
 //    Text(
 //        text = "Go to detail",
@@ -39,61 +59,43 @@ fun HomeView(
 
 }
 
+
 @Composable
-fun MoviesList(movieList: List<MovieModel.Result>) {
+fun PeopleList(peopleList: List<PeopleModel.Result>) {
 
-    setLog("MoviesList size : ${movieList.size}")
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-    )
-    {
-
-        items(movieList) {
-            MovieCard(movie = it)
-            setLog("data : ${it.title}")
-//            Text(text = it.title, style = TextStyleTypography.h2)
+        items(peopleList) {
+            PeopleCard(people = it)
         }
 
     }
 
-//    LazyRow(
-//        horizontalArrangement = Arrangement.spacedBy(4.dp),
-//        modifier = Modifier.fillMaxWidth()
-//    ) {
-//
-//        items(movieList) {
-//
-//            MovieCard(movie = it)
-//
-//            setLog("data : ${it.title}")
-////            Text(text = it.title, style = TextStyleTypography.h2)
-//        }
-//
-//    }
-
 }
 
-private fun setLog(msg: String) {
-    Log.e("Home", msg)
+@Composable
+fun MoviesList(movieList: List<MovieModel.Result>) {
+
+    LazyColumn {
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        items(movieList) {
+            MovieCard(movie = it)
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+    }
+
 }
-
-//@Composable
-//fun Home() {
-//    Text(text = "Go to detail")
-//}
-//
-//@Preview(
-//    showSystemUi = true,
-//    showBackground = true
-//)
-//@Composable
-//fun PreviewHomeView() {
-//    Home()
-//}
-
 
 
 

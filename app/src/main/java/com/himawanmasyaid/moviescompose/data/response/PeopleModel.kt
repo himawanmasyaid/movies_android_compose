@@ -3,7 +3,7 @@ package com.himawanmasyaid.moviescompose.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class PeopleResponse(
+data class PeopleModel(
     @SerializedName("page")
     val page: Int = 0,
     @SerializedName("results")
