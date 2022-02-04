@@ -12,10 +12,12 @@ import com.himawanmasyaid.moviescompose.ui.view.SplashView
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeView
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeViewModel
 import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailView
+import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailViewModel
 
 @Composable
 fun NavigationView(
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    movieDetailViewModel: MovieDetailViewModel
 ) {
 
     val navController = rememberNavController()
@@ -62,6 +64,7 @@ fun NavigationView(
             )?.let {
                 MovieDetailView(
                     navController = navController,
+                    viewModel = movieDetailViewModel,
                     movieId = it
                 )
             }

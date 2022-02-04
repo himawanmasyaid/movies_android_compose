@@ -3,24 +3,24 @@ package com.himawanmasyaid.moviescompose.data.state
 import androidx.compose.runtime.Composable
 
 @Composable
-fun NetworkState.onSuccess(block: @Composable () -> Unit): NetworkState {
-    if (this == NetworkState.SUCCESS) {
+fun ResponseState.onSuccess(block: @Composable () -> Unit): ResponseState {
+    if (this == ResponseState.SUCCESS) {
         block()
     }
     return this
 }
 
 @Composable
-fun NetworkState.onLoading(block: @Composable () -> Unit): NetworkState {
-    if (this == NetworkState.LOADING) {
+fun ResponseState.onLoading(block: @Composable () -> Unit): ResponseState {
+    if (this == ResponseState.LOADING) {
         block()
     }
     return this
 }
 
 @Composable
-fun NetworkState.onError(block: @Composable () -> Unit): NetworkState {
-    if (this == NetworkState.ERROR) {
+fun ResponseState.onError(block: @Composable () -> Unit): ResponseState {
+    if (this == ResponseState.ERROR) {
         block()
     }
     return this

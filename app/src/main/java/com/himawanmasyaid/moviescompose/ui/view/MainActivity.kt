@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import androidx.compose.runtime.remember
 import com.himawanmasyaid.moviescompose.navigation.NavigationView
 import com.himawanmasyaid.moviescompose.ui.theme.MoviesAndroidComposeTheme
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeViewModel
+import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailViewModel
 import com.himawanmasyaid.moviescompose.ui.view.splash.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,36 +26,25 @@ class MainActivity : ComponentActivity() {
 
     private val homeViewModel by viewModels<HomeViewModel>()
     private val splashViewModel by viewModels<SplashViewModel>()
+    private val movieDetailViewModel by viewModels<MovieDetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // This app draws behind the system bars, so we want to handle fitting system windows
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-        setLog("MainActivity")
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             MoviesAndroidComposeTheme {
                 NavigationView(
-                    homeViewModel
+                    homeViewModel,
+                    movieDetailViewModel
                 )
             }
         }
 
-//        setContent {
-//            MoviesAndroidComposeTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(color = MaterialTheme.colors.background) {
-//                    Greeting("Android")
-//                }
-//            }
-//        }
     }
 
-    private fun setLog(msg: String) {
-        Log.e("Home", msg)
-    }
 }
 
 

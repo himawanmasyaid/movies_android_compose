@@ -5,16 +5,21 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
 import com.himawanmasyaid.moviescompose.data.response.PeopleModel
+import com.himawanmasyaid.moviescompose.data.state.ResponseState
+import com.himawanmasyaid.moviescompose.data.state.onLoading
+import com.himawanmasyaid.moviescompose.ui.common.LoadingView
 import com.himawanmasyaid.moviescompose.ui.view.home.card.MovieCard
 import com.himawanmasyaid.moviescompose.ui.view.home.card.PeopleCard
 
@@ -24,13 +29,19 @@ fun HomeView(
     homeViewModel: HomeViewModel
 ) {
 
+    // state
+    val state by homeViewModel.movieState
+
     // rest api
     homeViewModel.fetchHome()
 
     val movies by homeViewModel.words
     val peoples by homeViewModel.peoples
 
-    Scaffold {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
 
         Column(
             modifier = Modifier
@@ -38,7 +49,6 @@ fun HomeView(
         ) {
 
             // HOME BAR VIEW
-            HomeBarView()
 
             HomeBarView()
 
@@ -50,14 +60,17 @@ fun HomeView(
 
                     PeopleList(peopleList = peoples.results)
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                 }
 
                 // MOVIE
 
                 items(movies.results) {
-                    MovieCard(movie = it)
+                    MovieCard(
+                        movie = it,
+                        navController = navController
+                    )
                 }
 
                 item {
@@ -67,9 +80,9 @@ fun HomeView(
             }
         }
 
+//        LoadingView(state = state)
+
     }
-
-
 
 //    Text(
 //        text = "Go to detail",
@@ -108,10 +121,7 @@ fun PeopleList(peopleList: List<PeopleModel.Result>) {
 //)
 //@Composable
 //private fun PreviewHomeView() {
-//    HomeView(
-//        null,
-//        null
-//    )
+//    LoadingView(ResponseState.SUCCESS)
 //}
 
 

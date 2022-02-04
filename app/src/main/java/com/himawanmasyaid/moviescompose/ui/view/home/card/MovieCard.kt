@@ -3,6 +3,7 @@ package com.himawanmasyaid.moviescompose.ui.view.home.card
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,13 +17,30 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
+import com.himawanmasyaid.moviescompose.navigation.NavigationDirection
 import com.himawanmasyaid.moviescompose.ui.common.ImageLoadPoster
 import com.himawanmasyaid.moviescompose.ui.theme.*
 
 
 @Composable
-fun MovieCard(movie: MovieModel.Result) {
+fun MovieCard(
+    movie: MovieModel.Result,
+    navController: NavController
+) {
+
+    //    Text(
+//        text = "Go to detail",
+//        modifier = Modifier
+//            .clickable(
+//                onClick = {
+//                    navController.navigate(
+//                        "${NavigationDirection.MovieDetails.route}/123"
+//                    )
+//                }
+//            )
+//    )
 
     Box(
         modifier = Modifier
@@ -34,6 +52,11 @@ fun MovieCard(movie: MovieModel.Result) {
                     SolidColor(bgLineColor)
                 ),
                 RoundedCornerShape(10.dp)
+            )
+            .clickable(
+                onClick = {
+                    navController.navigate("${NavigationDirection.MovieDetails.route}/${movie.id}")
+                }
             )
     ) {
 
@@ -118,23 +141,23 @@ fun MovieCard(movie: MovieModel.Result) {
 
 }
 
-@Composable
-private fun MovieCardView() {
-    MovieCard(
-        MovieModel.Result(
-            originalTitle = "Spider-Man: No Way Home",
-            overview = "Deskripsi film ini bagus banget",
-            voteAverage = 7.7,
-            voteCount = 1743,
-            releaseDate = "2021-12-15"
-        )
-    )
-}
+//@Composable
+//private fun MovieCardView() {
+//    MovieCard(
+//        MovieModel.Result(
+//            originalTitle = "Spider-Man: No Way Home",
+//            overview = "Deskripsi film ini bagus banget",
+//            voteAverage = 7.7,
+//            voteCount = 1743,
+//            releaseDate = "2021-12-15"
+//        )
+//    )
+//}
 
-@Preview(
-    showBackground = true
-)
-@Composable
-private fun PreviewMovieCard() {
-    MovieCardView()
-}
+//@Preview(
+//    showBackground = true
+//)
+//@Composable
+//private fun PreviewMovieCard() {
+//    MovieCardView()
+//}

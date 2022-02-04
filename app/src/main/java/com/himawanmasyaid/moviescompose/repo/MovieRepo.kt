@@ -1,6 +1,7 @@
 package com.himawanmasyaid.moviescompose.repo
 
 import com.himawanmasyaid.moviescompose.data.request.MoviesRequest
+import com.himawanmasyaid.moviescompose.data.response.MovieDetailModel
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
 import com.himawanmasyaid.moviescompose.data.source.MovieDataSource
 import com.himawanmasyaid.moviescompose.network.services.MovieService
@@ -15,4 +16,7 @@ class MovieRepo @Inject constructor(
         return response
     }
 
+    override suspend fun fetchDetailMovies(id: Int): MovieDetailModel {
+        return services.fetchDetailMovie(id)
+    }
 }
