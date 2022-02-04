@@ -8,9 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.himawanmasyaid.moviescompose.ui.view.SplashView
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeView
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeViewModel
-import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetail
+import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailView
 
 @Composable
 fun NavigationView(
@@ -23,8 +24,16 @@ fun NavigationView(
 
     NavHost(
         navController = navController,
-        startDestination = NavigationDirection.Home.route
+        startDestination = NavigationDirection.Splash.route
     ) {
+
+        // SPLASH
+
+        composable(
+            route = NavigationDirection.Splash.route
+        ) {
+            SplashView(navController = navController)
+        }
 
         // HOME
         composable(
@@ -51,15 +60,15 @@ fun NavigationView(
             backStackEntry.arguments?.getString(
                 NavigationDirection.MovieDetails.argsId
             )?.let {
-                MovieDetail(
+                MovieDetailView(
                     navController = navController,
                     movieId = it
                 )
             }
         }
-//        composable(NavigationView.About.route) {
-//            About(navController)
-//        }
+
+        // END MOVIE
+
     }
 
 }

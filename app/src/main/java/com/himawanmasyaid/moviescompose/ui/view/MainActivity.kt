@@ -16,12 +16,14 @@ import androidx.compose.runtime.remember
 import com.himawanmasyaid.moviescompose.navigation.NavigationView
 import com.himawanmasyaid.moviescompose.ui.theme.MoviesAndroidComposeTheme
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeViewModel
+import com.himawanmasyaid.moviescompose.ui.view.splash.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val homeViewModel by viewModels<HomeViewModel>()
+    private val splashViewModel by viewModels<SplashViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

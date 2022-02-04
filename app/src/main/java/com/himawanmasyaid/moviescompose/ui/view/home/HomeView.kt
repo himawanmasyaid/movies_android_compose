@@ -5,9 +5,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
@@ -25,25 +28,48 @@ fun HomeView(
     homeViewModel.fetchHome()
 
     val movies by homeViewModel.words
+    val peoples by homeViewModel.peoples
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    Scaffold {
 
-        // PEOPLE
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
 
+            // HOME BAR VIEW
+            HomeBarView()
 
+            HomeBarView()
 
-        // MOVIE
+            LazyColumn {
 
-        Spacer(modifier = Modifier.height(16.dp))
+                // PEOPLE
 
-        MoviesList(movieList = movies.results)
+                item {
 
-        Spacer(modifier = Modifier.height(16.dp))
+                    PeopleList(peopleList = peoples.results)
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                }
+
+                // MOVIE
+
+                items(movies.results) {
+                    MovieCard(movie = it)
+                }
+
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+
+            }
+        }
 
     }
+
+
 
 //    Text(
 //        text = "Go to detail",
@@ -76,26 +102,16 @@ fun PeopleList(peopleList: List<PeopleModel.Result>) {
 
 }
 
-@Composable
-fun MoviesList(movieList: List<MovieModel.Result>) {
-
-    LazyColumn {
-
-        item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        items(movieList) {
-            MovieCard(movie = it)
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-    }
-
-}
-
+//@Preview(
+//    showSystemUi = true,
+//    showBackground = true
+//)
+//@Composable
+//private fun PreviewHomeView() {
+//    HomeView(
+//        null,
+//        null
+//    )
+//}
 
 

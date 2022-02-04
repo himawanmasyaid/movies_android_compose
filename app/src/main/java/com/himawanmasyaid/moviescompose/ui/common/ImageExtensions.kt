@@ -24,11 +24,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ImageLoadDrawable(painter: Painter, height: Int, contentDescription: String? = "") {
+fun ImageLoadDrawable(painter: Painter, modifier: Modifier, contentDescription: String? = "") {
 
     Box(
-        modifier = Modifier
-            .height(height.dp)
+        modifier = modifier
     ) {
         Image(
             painter = painter,
@@ -112,7 +111,7 @@ fun ImageLoadPoster(imageUrl: String, modifier: Modifier) {
         shimmerParams = ShimmerParams(
             baseColor = MaterialTheme.colors.background,
             highlightColor = bgLineColor,
-            durationMillis = 350,
+            durationMillis = 1000,
             dropOff = 0.65f,
             tilt = 20f
         ),

@@ -36,8 +36,8 @@ fun PeopleCard(people: PeopleModel.Result) {
         ImageLoadPoster(
             imageUrl = people.profilePath,
             modifier = Modifier
-                .height(150.dp)
-                .width(150.dp)
+                .height(100.dp)
+                .width(100.dp)
                 .clip(CircleShape)
         )
 
@@ -50,7 +50,7 @@ fun PeopleCard(people: PeopleModel.Result) {
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(150.dp)
+            modifier = Modifier.width(100.dp)
         )
 
     }
