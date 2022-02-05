@@ -1,9 +1,6 @@
 package com.himawanmasyaid.moviescompose.ui.view.home.card
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,19 +16,30 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.himawanmasyaid.moviescompose.data.response.PeopleModel
+import com.himawanmasyaid.moviescompose.navigation.NavigationDirection
 import com.himawanmasyaid.moviescompose.ui.common.ImageLoadPoster
 import com.himawanmasyaid.moviescompose.ui.theme.TextStyleTypography
 import com.himawanmasyaid.moviescompose.ui.theme.bgLineColor
 import com.himawanmasyaid.moviescompose.ui.theme.bgPrimaryColor
 
 @Composable
-fun PeopleCard(people: PeopleModel.Result) {
+fun PeopleCard(
+    people: PeopleModel.Result,
+    navController: NavController
+) {
 
-    Column(Modifier.padding(
-        start = 8.dp, end = 8.dp,
-        top = 16.dp, bottom = 16.dp
-    )) {
+    Column(
+        modifier = Modifier
+            .padding(
+                start = 8.dp, end = 8.dp,
+                top = 16.dp, bottom = 16.dp)
+            .clickable(onClick = {
+                navController.navigate("${NavigationDirection.PeopleDetail.route}/${people.id}")
+            })
+
+    ) {
 
         ImageLoadPoster(
             imageUrl = people.profilePath,
@@ -57,15 +65,15 @@ fun PeopleCard(people: PeopleModel.Result) {
 
 }
 
-@Preview(
-    showSystemUi = true,
-//    showBackground = true
-)
-@Composable
-private fun PreviewPeopleCard() {
-    PeopleCard(
-        PeopleModel.Result(
-            name = "Manusia"
-        )
-    )
-}
+//@Preview(
+//    showSystemUi = true,
+////    showBackground = true
+//)
+//@Composable
+//private fun PreviewPeopleCard() {
+//    PeopleCard(
+//        PeopleModel.Result(
+//            name = "Manusia"
+//        )
+//    )
+//}

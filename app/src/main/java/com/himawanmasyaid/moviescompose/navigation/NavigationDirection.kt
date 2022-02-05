@@ -6,8 +6,13 @@ sealed class NavigationDirection(val route: String) {
 
     object Home : NavigationDirection("home")
 
-    object MovieDetails : NavigationDirection("movies") {
-        const val routeWithArgument: String = "movies/{id}"
+    object MovieDetails : NavigationDirection("movie_detail") {
+        const val routeWithArgument: String = "movie_detail/{id}"
+        const val argsId: String = "id"
+    }
+
+    object PeopleDetail : NavigationDirection("people_detail") {
+        const val routeWithArgument: String = "people_detail/{id}"
         const val argsId: String = "id"
     }
 

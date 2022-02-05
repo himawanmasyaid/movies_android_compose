@@ -81,7 +81,7 @@ fun MovieDetail(movie: MovieDetailModel) {
 
                     Text(
                         text = movie.originalTitle,
-                        style = TextStyleTypography.h1,
+                        style = TextStyleTypography.h2,
                         modifier = Modifier
                             .fillMaxWidth()
 
@@ -92,8 +92,7 @@ fun MovieDetail(movie: MovieDetailModel) {
                     Text(
                         text = "${movie.voteAverage} Rating",
                         color = textWhiteColor,
-                        style = TextStyleTypography.h5,
-                        fontSize = 16.sp,
+                        style = TextStyleTypography.h4,
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1,
                         textAlign = TextAlign.Start,

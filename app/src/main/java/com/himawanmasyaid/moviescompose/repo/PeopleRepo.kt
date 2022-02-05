@@ -3,6 +3,7 @@ package com.himawanmasyaid.moviescompose.repo
 import com.himawanmasyaid.moviescompose.data.request.MoviesRequest
 import com.himawanmasyaid.moviescompose.data.request.PeopleRequest
 import com.himawanmasyaid.moviescompose.data.response.MovieModel
+import com.himawanmasyaid.moviescompose.data.response.PeopleDetailModel
 import com.himawanmasyaid.moviescompose.data.response.PeopleModel
 import com.himawanmasyaid.moviescompose.data.source.PeopleDataSource
 import com.himawanmasyaid.moviescompose.network.services.MovieService
@@ -16,5 +17,9 @@ class PeopleRepo @Inject constructor(
     override suspend fun fetchPeople(request: PeopleRequest): PeopleModel {
         val response = services.fetchPopularPeople(request.page)
         return response
+    }
+
+    override suspend fun fetchPeopleDetail(id: Int): PeopleDetailModel {
+        return services.fetchPeopleDetail(id)
     }
 }

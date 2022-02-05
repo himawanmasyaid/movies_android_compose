@@ -20,6 +20,7 @@ import com.himawanmasyaid.moviescompose.data.response.PeopleModel
 import com.himawanmasyaid.moviescompose.data.state.ResponseState
 import com.himawanmasyaid.moviescompose.data.state.onLoading
 import com.himawanmasyaid.moviescompose.ui.common.LoadingView
+import com.himawanmasyaid.moviescompose.ui.theme.TextStyleTypography
 import com.himawanmasyaid.moviescompose.ui.view.home.card.MovieCard
 import com.himawanmasyaid.moviescompose.ui.view.home.card.PeopleCard
 
@@ -58,9 +59,15 @@ fun HomeView(
 
                 item {
 
-                    PeopleList(peopleList = peoples.results)
+                    PeopleList(peopleList = peoples.results, navController = navController)
 
                     Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Popular Movie",
+                        style = TextStyleTypography.h1,
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
 
                 }
 
@@ -84,23 +91,14 @@ fun HomeView(
 
     }
 
-//    Text(
-//        text = "Go to detail",
-//        modifier = Modifier
-//            .clickable(
-//                onClick = {
-//                    navController.navigate(
-//                        "${NavigationDirection.MovieDetails.route}/123"
-//                    )
-//                }
-//            )
-//    )
-
 }
 
 
 @Composable
-fun PeopleList(peopleList: List<PeopleModel.Result>) {
+fun PeopleList(
+    peopleList: List<PeopleModel.Result>,
+    navController: NavController
+) {
 
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -108,7 +106,7 @@ fun PeopleList(peopleList: List<PeopleModel.Result>) {
     ) {
 
         items(peopleList) {
-            PeopleCard(people = it)
+            PeopleCard(people = it, navController = navController)
         }
 
     }

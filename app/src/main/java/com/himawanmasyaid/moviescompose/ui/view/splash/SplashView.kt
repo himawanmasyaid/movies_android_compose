@@ -30,13 +30,8 @@ fun SplashView(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        
-        ImageLoadDrawable(
-            painter = painterResource(id = R.drawable.ic_netflix),
-            modifier = Modifier
-                .height(200.dp)
-                .width(200.dp)
-        )
+
+        LogoView()
 
         LaunchedEffect(key1 = true) {
             delay(2000L)
@@ -46,15 +41,24 @@ fun SplashView(
         }
         
     }
-    
 
 }
 
-//@Preview(
-//    showSystemUi = true,
-//    showBackground = true
-//)
-//@Composable
-//private fun PreviewPSplashView() {
-//    SplashView()
-//}
+@Composable
+private fun LogoView() {
+    ImageLoadDrawable(
+        painter = painterResource(id = R.drawable.ic_jetpack_compose_logo),
+        modifier = Modifier
+            .height(100.dp)
+            .width(100.dp)
+    )
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true
+)
+@Composable
+private fun PreviewPSplashView() {
+    LogoView()
+}

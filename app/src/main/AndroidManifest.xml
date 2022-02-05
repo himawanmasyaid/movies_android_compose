@@ -8,9 +8,9 @@
     <application
         android:name=".MoviesApplication"
         android:fullBackupContent="true"
-        android:icon="@mipmap/movies_logo"
+        android:icon="@mipmap/compose_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/movies_logo_round"
+        android:roundIcon="@mipmap/compose_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesAndroidCompose"
         >

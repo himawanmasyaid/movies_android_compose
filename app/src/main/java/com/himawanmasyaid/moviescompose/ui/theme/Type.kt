@@ -14,19 +14,19 @@ val TextStyleTypography by lazy {
         h1 = TextStyle(
             fontFamily = FontPrimary,
             fontWeight = FontWeight.Bold,
-            fontSize = 26.sp,
+            fontSize = 28.sp,
             color = textBlackColor
         ),
         h2 = TextStyle(
             fontFamily = FontPrimary,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
+            fontSize = 24.sp,
             color = textBlackColor
         ),
         h3 = TextStyle(
             fontFamily = FontPrimary,
             fontWeight = FontWeight.Bold,
-            fontSize = 18.sp,
+            fontSize = 20.sp,
             color = textBlackColor
         ),
         h4 = TextStyle(

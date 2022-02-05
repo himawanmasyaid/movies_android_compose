@@ -30,18 +30,6 @@ fun MovieCard(
     navController: NavController
 ) {
 
-    //    Text(
-//        text = "Go to detail",
-//        modifier = Modifier
-//            .clickable(
-//                onClick = {
-//                    navController.navigate(
-//                        "${NavigationDirection.MovieDetails.route}/123"
-//                    )
-//                }
-//            )
-//    )
-
     Box(
         modifier = Modifier
             .fillMaxWidth()

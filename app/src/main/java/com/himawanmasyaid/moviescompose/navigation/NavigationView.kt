@@ -13,11 +13,14 @@ import com.himawanmasyaid.moviescompose.ui.view.home.HomeView
 import com.himawanmasyaid.moviescompose.ui.view.home.HomeViewModel
 import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailView
 import com.himawanmasyaid.moviescompose.ui.view.movie.MovieDetailViewModel
+import com.himawanmasyaid.moviescompose.ui.view.people.PeopleDetailView
+import com.himawanmasyaid.moviescompose.ui.view.people.PeopleDetailViewModel
 
 @Composable
 fun NavigationView(
     homeViewModel: HomeViewModel,
-    movieDetailViewModel: MovieDetailViewModel
+    movieDetailViewModel: MovieDetailViewModel,
+    peopleDetailViewModel: PeopleDetailViewModel
 ) {
 
     val navController = rememberNavController()
@@ -71,6 +74,30 @@ fun NavigationView(
         }
 
         // END MOVIE
+
+        // PEOPLE
+
+        composable(
+            route = NavigationDirection.PeopleDetail.routeWithArgument,
+            arguments = listOf(
+                navArgument(
+                    NavigationDirection.PeopleDetail.argsId
+                ) {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            backStackEntry.arguments?.getString(
+                NavigationDirection.PeopleDetail.argsId
+            )?.let {
+                PeopleDetailView(
+                    viewModel = peopleDetailViewModel,
+                    peopleId = it.toInt()
+                )
+            }
+        }
+
+        // END PEOPLE
 
     }
 
