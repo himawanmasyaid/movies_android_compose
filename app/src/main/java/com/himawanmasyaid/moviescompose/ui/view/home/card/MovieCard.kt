@@ -69,7 +69,8 @@ fun MovieCard(
 
                 Text(
                     text = movie.originalTitle,
-                    style = TextStyleTypography.h2,
+                    style = TextStyleTypography.subtitle1,
+                    fontSize = 24.sp,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 2,
                     textAlign = TextAlign.Start,

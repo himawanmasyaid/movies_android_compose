@@ -65,7 +65,7 @@ fun HomeView(
 
                     Text(
                         text = "Popular Movie",
-                        style = TextStyleTypography.h1,
+                        style = TextStyleTypography.h3,
                         modifier = Modifier.padding(start = 16.dp)
                     )
 

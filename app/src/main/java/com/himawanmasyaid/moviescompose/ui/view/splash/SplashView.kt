@@ -49,8 +49,8 @@ private fun LogoView() {
     ImageLoadDrawable(
         painter = painterResource(id = R.drawable.ic_jetpack_compose_logo),
         modifier = Modifier
-            .height(100.dp)
-            .width(100.dp)
+            .height(200.dp)
+            .width(200.dp)
     )
 }
 
