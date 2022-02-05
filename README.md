@@ -5,10 +5,10 @@ Build Movie Android App using Jetpack Compose, MVVM Architecture with api from T
 Library Used :
 
 Jetpack Compose
-Coil
-Coroutines
-Hilt Dependency Injection
-Retrofit
-Okhttp
-Gson
+- Coil
+- Coroutines
+- Hilt Dependency Injection
+- Retrofit
+- Okhttp
+- Gson
 
