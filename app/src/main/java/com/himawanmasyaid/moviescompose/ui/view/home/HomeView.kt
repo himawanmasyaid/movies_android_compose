@@ -12,14 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.himawanmasyaid.moviescompose.data.response.MovieModel
 import com.himawanmasyaid.moviescompose.data.response.PeopleModel
-import com.himawanmasyaid.moviescompose.data.state.ResponseState
-import com.himawanmasyaid.moviescompose.data.state.onLoading
-import com.himawanmasyaid.moviescompose.ui.common.LoadingView
 import com.himawanmasyaid.moviescompose.ui.theme.TextStyleTypography
 import com.himawanmasyaid.moviescompose.ui.view.home.card.MovieCard
 import com.himawanmasyaid.moviescompose.ui.view.home.card.PeopleCard
