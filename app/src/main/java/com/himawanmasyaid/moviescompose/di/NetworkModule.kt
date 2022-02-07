@@ -29,10 +29,6 @@ object NetworkModule {
         90
     }
 
-//    private val responseInterceptor by lazy {
-//        ResponseInterceptor
-//    }
-
     private val jsonChecker by lazy {
         object : Converter.Factory() {
             override fun responseBodyConverter(
@@ -81,13 +77,6 @@ object NetworkModule {
         val builder = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(RequestInterceptor())
-//            .addNetworkInterceptor { chain ->
-//                val original = chain.request()
-//                val requestBuilder = original.newBuilder()
-//                    .header("Authorization", "Bearer ${accountManager.getToken()}")
-//                val request = requestBuilder.build()
-//                chain.proceed(request)
-//            }
             .connectTimeout(timeOutSecond.toLong(), TimeUnit.SECONDS)
             .readTimeout(timeOutSecond.toLong(), TimeUnit.SECONDS)
             .writeTimeout(timeOutSecond.toLong(), TimeUnit.SECONDS)
