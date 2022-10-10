@@ -35,9 +35,7 @@ fun SplashView(
 
         LaunchedEffect(key1 = true) {
             delay(2000L)
-
             navController.navigate(NavigationDirection.Home.route)
-
         }
         
     }
@@ -49,8 +47,8 @@ private fun LogoView() {
     ImageLoadDrawable(
         painter = painterResource(id = R.drawable.ic_jetpack_compose_logo),
         modifier = Modifier
-            .height(200.dp)
-            .width(200.dp)
+            .height(50.dp)
+            .width(50.dp)
     )
 }
 
